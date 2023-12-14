@@ -16,6 +16,10 @@ public class LogIn : MonoBehaviour
     [SerializeField]
     private Button submitButton;
 
+    private void Start()
+    {
+        submitButton.interactable = false;
+    }
     public void CallLogIn()
     {
         StartCoroutine(Login());

@@ -8,6 +8,14 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
+    private Button registerButton;
+    [SerializeField]
+    private Button loginButton;
+    [SerializeField]
+    private Button playButton;
+
+
+    [SerializeField]
     private TextMeshProUGUI playerDisplay;
     private void Start()
     {
@@ -15,6 +23,10 @@ public class MainMenu : MonoBehaviour
         {
             playerDisplay.text = "Player: " + DBManager.username;
         }
+
+        registerButton.interactable = !DBManager.LoggedIn;
+        loginButton.interactable = !DBManager.LoggedIn;
+        playButton.interactable = DBManager.LoggedIn;
     }
 
     public void GoToRegister()

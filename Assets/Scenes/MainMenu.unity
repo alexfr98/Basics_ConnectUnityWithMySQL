@@ -1428,4 +1428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703920ab6a1a5e947ba4d92ea4536ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registerButton: {fileID: 1915766807}
+  loginButton: {fileID: 1857365290}
+  playButton: {fileID: 1070531028}
   playerDisplay: {fileID: 1679006469}

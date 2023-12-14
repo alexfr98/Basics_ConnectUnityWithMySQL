@@ -15,6 +15,10 @@ public class Registration : MonoBehaviour
 
     [SerializeField]
     private Button submitButton;
+    private void Start()
+    {
+        submitButton.interactable = false;
+    }
 
     public void CallRegister()
     {
