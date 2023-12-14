@@ -8,10 +8,13 @@ using UnityEngine.UI;
 
 public class LogIn : MonoBehaviour
 {
-    public TMP_InputField nameField;
-    public TMP_InputField passwordField;
+    [SerializeField]
+    private TMP_InputField nameField;
+    [SerializeField]
+    private TMP_InputField passwordField;
 
-    public Button submitButton;
+    [SerializeField]
+    private Button submitButton;
 
     public void CallLogIn()
     {

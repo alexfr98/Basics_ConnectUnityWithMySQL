@@ -7,7 +7,8 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
-    public TextMeshProUGUI playerDisplay;
+    [SerializeField]
+    private TextMeshProUGUI playerDisplay;
     private void Start()
     {
         if (DBManager.LoggedIn)

@@ -8,8 +8,10 @@ using UnityEngine.Networking;
 
 public class Game : MonoBehaviour
 {
-    public TextMeshProUGUI playerDisplay;
-    public TextMeshProUGUI scoreDisplay;
+    [SerializeField]
+    private TextMeshProUGUI playerDisplay;
+    [SerializeField]
+    private TextMeshProUGUI scoreDisplay;
 
     private void Awake()
     {
