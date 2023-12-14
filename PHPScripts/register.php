@@ -9,11 +9,12 @@
         exit();
     }
 
-    $username = $_POST["name"];
+    $username = mysqli_real_escape_string( $con, $_POST["name"] );
+    $usernameclean = htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); //Every character in ascii code below 28 and special characters are avoided
     $password = $_POST["password"];
     
     //check if the username exists
-    $namecheckquery = "SELECT username FROM players WHERE username='" . $username . "';";
+    $namecheckquery = "SELECT username FROM players WHERE username='" . $usernameclean . "';";
 
     $namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query failed"); // error code #2 - name check query failed
 
@@ -30,11 +31,11 @@
 
     //encryption --> sha-256 encryption. The first 5 indicates the type of incryption and the 5000 the number of rounds. Run through 500 rounds shifting these characters. 
 
-    $_salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$"; //steamedhams is just a random goofy word to use it in the encryption. The username will be used too. WE DONT WANT TO USE THE PASSWORD
+    $_salt = "\$5\$rounds=5000\$" . "steamedhams" . $usernameclean . "\$"; //steamedhams is just a random goofy word to use it in the encryption. The username will be used too. WE DONT WANT TO USE THE PASSWORD
     
     $_hash = crypt($password, $_salt); //--> this is not the best way to secure things. If we want to secure it better, just check more information
 
-    $insertuserquery = "INSERT INTO players (username, hash, salt) VALUES ('". $username . "', '" . $_hash . "', '" . $_salt . "');";
+    $insertuserquery = "INSERT INTO players (username, hash, salt) VALUES ('". $usernameclean . "', '" . $_hash . "', '" . $_salt . "');";
     mysqli_query($con, $insertuserquery) or die("4: Insert player query failed: ". mysqli_error($con)); // error code #4 - insert query failed
 
     echo("0"); // SUCCESS

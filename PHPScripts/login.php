@@ -9,17 +9,18 @@
         exit();
     }
 
-    $username = $_POST["name"];
+    $username = mysqli_real_escape_string( $con, $_POST["name"] );
+    $usernameclean = htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); //Every character in ascii code below 28 and special characters are avoided
     $password = $_POST["password"];
 
     //check if the username exists
-    $namecheckquery = "SELECT username , salt, hash, score FROM players WHERE username='" . $username . "';";
+    $namecheckquery = "SELECT username , salt, hash, score FROM players WHERE username='" . $usernameclean . "';";
 
     $namecheck = mysqli_query($con, $namecheckquery) or die("2: Name check query failed"); // error code #2 - name check query failed
 
     if(mysqli_num_rows($namecheck) != 1) {
 
-        echo("5: This name does not exist. The number of rows with username " .$username .  "are: " . mysqli_num_rows($namecheck)); // error code #5 - number of names matching != 1
+        echo("5: This name does not exist. The number of rows with username " .$usernameclean .  "are: " . mysqli_num_rows($namecheck)); // error code #5 - number of names matching != 1
         exit();
     }
 
