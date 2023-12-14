@@ -1,0 +1,1 @@
+Basic project connecting Unity and MySQL. MAMP was used to have the DB locally to not need hosting. Simulated and updated this tutorial https://www.youtube.com/playlist?list=PL5KbKbJ6Gf99mcmE1ptsn0oXO1_vnKDlS
